@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backend-pg
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  namespace: backend-pg
 spec:
   replicas: 2
   selector:
@@ -14,7 +20,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image:  100xdevs/backend-pg:2
+          image: jimil1407/k8s-backend:2
           ports:
             - containerPort: 3000
 ---
@@ -22,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
+  namespace: backend-pg
 spec:
   selector:
     app: backend

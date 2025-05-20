@@ -11,7 +11,7 @@ data:
     http {
       server {
         listen 80;
-        server_name k8s-backend.100xdevs.com;
+        server_name k8s-backend.jimil.com;
         
         location / {
           proxy_pass http://backend.default.svc.cluster.local:3000;
